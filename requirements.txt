@@ -1,0 +1,65 @@
+# =============================================================================
+# Core data & API stack (runs anywhere, CPU-only)
+# =============================================================================
+fastapi>=0.111
+uvicorn[standard]>=0.30
+pydantic>=2.7
+python-multipart>=0.0.9
+httpx>=0.27
+python-dotenv>=1.0
+sqlalchemy>=2.0
+psycopg[binary]>=3.1
+pgvector>=0.2.5
+alembic>=1.13
+numpy>=1.26
+
+# =============================================================================
+# Phase 2 – RAG / vector search
+# =============================================================================
+sentence-transformers>=3.0
+pymupdf>=1.24
+python-docx>=1.1
+unstructured>=0.14          # universal document parsing (optional but recommended)
+tiktoken>=0.7
+ragas>=0.1.7                # Faithfulness / Context Precision / Answer Relevancy
+langchain-text-splitters>=0.2   # reference recursive splitter (we ship our own too)
+
+# =============================================================================
+# Phase 1 – Fine-tuning (GPU extras; install on CUDA machines)
+# =============================================================================
+torch>=2.3
+transformers>=4.42
+datasets>=2.20
+accelerate>=0.31
+peft>=0.11                  # LoRA injection / merge
+trl>=0.9                   # SFTTrainer + DPOTrainer
+bitsandbytes>=0.43 ; platform_system == "Linux"   # NF4 + double quantization
+safetensors>=0.4
+evaluate>=0.4
+
+# =============================================================================
+# Experiment tracking & MLOps
+# =============================================================================
+mlflow>=2.14
+
+# =============================================================================
+# Phase 3 – Agentic orchestration
+# =============================================================================
+langgraph>=0.2
+langchain-core>=0.2
+openai>=1.30                # OpenAI-compatible client for vLLM proxy
+slack-sdk>=3.27
+
+# =============================================================================
+# Phase 4 – Observability & scheduling
+# =============================================================================
+langsmith>=0.1
+langfuse>=2.40
+apache-airflow>=2.9        # flywheel DAG host (deploy separately in prod image)
+
+# =============================================================================
+# Dev / test
+# =============================================================================
+pytest>=8.0
+pytest-asyncio>=0.23
+ruff>=0.5

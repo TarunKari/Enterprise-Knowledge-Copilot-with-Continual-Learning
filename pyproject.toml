@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-platform"
+version = "1.0.0"
+description = "End-to-end enterprise LLM platform: LoRA/NF4 fine-tuning + DPO, hybrid pgvector RAG with reranking, LangGraph agent with human-in-the-loop, FastAPI serving, MLflow/Airflow continual learning."
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+include = ["src*", "configs*"]
+
+[project.scripts]
+llm-curate = "src.finetune.data_curation:main"
+llm-train-sft = "src.finetune.train_sft:main"
+llm-train-dpo = "src.finetune.train_dpo:main"
+llm-export = "src.finetune.export_inference:main"
+llm-ingest = "src.rag.ingestion:main"
+llm-chunk = "src.rag.chunking:main"
+llm-embed-index = "src.rag.vector_store:main"
+llm-rag-query = "src.rag.pipeline:main"
+llm-rag-eval = "src.rag.evaluation:main"
+llm-flywheel-batch = "src.continual.feedback_loop:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
