@@ -1,7 +1,3 @@
---- README.md (原始)
-
-
-+++ README.md (修改后)
 # 🚀 Enterprise LLM Platform — Fine-Tuning · RAG · Agents · Continual Learning
 
 A production-grade, end-to-end platform that takes an open-source model (e.g. **Llama-3-8B**) from
@@ -388,6 +384,4 @@ llm-rag-eval --offline              # score pre-baked predictions without live r
 - **RAGAS needs an LLM-as-judge** → set `OPENAI_API_KEY`, or use the built-in offline lexical scorers in `src/rag/evaluation.py`.
 - **Agent never pauses for approval** → set `AGENT_APPROVAL_REQUIRED=true` and configure `SLACK_APPROVAL_WEBHOOK_URL`.
 
-## 📄 License
 
-Internal enterprise project — all rights reserved by your organization. Adapt freely inside your company.
